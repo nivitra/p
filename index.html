@@ -1,25 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
   <title>For You. Only You. 💕</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap"
+    rel="stylesheet" />
   <style>
     :root {
       --deep-rose: #c0215a;
-      --rose:      #e63c7e;
-      --pink:      #ff6fa8;
-      --lpink:     #ffb3cf;
-      --blush:     #ffe4ef;
-      --white:     #ffffff;
-      --gold:      #f7c59f;
+      --rose: #e63c7e;
+      --pink: #ff6fa8;
+      --lpink: #ffb3cf;
+      --blush: #ffe4ef;
+      --white: #ffffff;
+      --gold: #f7c59f;
     }
 
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-    html, body {
-      width: 100%; height: 100%;
+    html,
+    body {
+      width: 100%;
+      height: 100%;
       overflow: hidden;
       background: #150010;
       font-family: 'Lato', sans-serif;
@@ -35,24 +46,46 @@
 
     /* ── Floating hearts ── */
     #hearts-bg {
-      position: fixed; inset: 0;
-      pointer-events: none; z-index: 0; overflow: hidden;
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
     }
+
     .bg-heart {
-      position: absolute; bottom: -60px;
-      font-size: 1.2rem; opacity: 0;
-      animation: floatUp linear infinite; user-select: none;
+      position: absolute;
+      bottom: -60px;
+      font-size: 1.2rem;
+      opacity: 0;
+      animation: floatUp linear infinite;
+      user-select: none;
     }
+
     @keyframes floatUp {
-      0%   { transform: translateY(0) rotate(0deg) scale(.8); opacity: 0; }
-      10%  { opacity: .5; }
-      90%  { opacity: .25; }
-      100% { transform: translateY(-110vh) rotate(360deg) scale(1.2); opacity: 0; }
+      0% {
+        transform: translateY(0) rotate(0deg) scale(.8);
+        opacity: 0;
+      }
+
+      10% {
+        opacity: .5;
+      }
+
+      90% {
+        opacity: .25;
+      }
+
+      100% {
+        transform: translateY(-110vh) rotate(360deg) scale(1.2);
+        opacity: 0;
+      }
     }
 
     /* ── Slideshow wrapper ── */
     #slideshow {
-      position: relative; z-index: 10;
+      position: relative;
+      z-index: 10;
       /* Fill viewport between left/right nav arrows */
       width: calc(100vw - 110px);
       /* In landscape phone height is the king */
@@ -62,21 +95,39 @@
     }
 
     .slide {
-      display: none; width: 100%; height: 100%;
-      border-radius: 20px; overflow: hidden; position: relative;
-      animation: slideIn .55s cubic-bezier(.22,1,.36,1);
+      display: none;
+      width: 100%;
+      height: 100%;
+      border-radius: 20px;
+      overflow: hidden;
+      position: relative;
+      animation: slideIn .55s cubic-bezier(.22, 1, .36, 1);
     }
-    .slide.active { display: flex; }
+
+    .slide.active {
+      display: flex;
+    }
 
     @keyframes slideIn {
-      from { opacity: 0; transform: scale(.95) translateY(12px); }
-      to   { opacity: 1; transform: scale(1)   translateY(0); }
+      from {
+        opacity: 0;
+        transform: scale(.95) translateY(12px);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
     }
 
     .slide-inner {
-      position: relative; width: 100%; height: 100%;
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       text-align: center;
       padding: 3% 6%;
       gap: clamp(6px, 1.4vh, 14px);
@@ -84,35 +135,65 @@
     }
 
     .deco-heart {
-      position: absolute; font-size: .95rem; opacity: .14;
+      position: absolute;
+      font-size: .95rem;
+      opacity: .14;
       animation: dpulse 2.5s ease-in-out infinite;
     }
+
     @keyframes dpulse {
-      0%,100% { transform: scale(1);   opacity: .11; }
-      50%      { transform: scale(1.3); opacity: .22; }
+
+      0%,
+      100% {
+        transform: scale(1);
+        opacity: .11;
+      }
+
+      50% {
+        transform: scale(1.3);
+        opacity: .22;
+      }
     }
 
     /* ── Typography ── */
     .slide-tag {
       font-size: clamp(8px, 1.2vh, 11px);
-      letter-spacing: 2.5px; text-transform: uppercase;
-      color: var(--lpink); opacity: .85;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--lpink);
+      opacity: .85;
     }
+
     .slide-title {
       font-family: 'Playfair Display', serif;
       font-size: clamp(16px, 3.6vh, 38px);
-      line-height: 1.15; color: var(--white);
-      text-shadow: 0 2px 24px rgba(230,60,126,.5);
+      line-height: 1.15;
+      color: var(--white);
+      text-shadow: 0 2px 24px rgba(230, 60, 126, .5);
     }
-    .slide-title em { color: var(--pink); font-style: italic; }
+
+    .slide-title em {
+      color: var(--pink);
+      font-style: italic;
+    }
 
     .slide-body {
       font-size: clamp(10px, 1.65vh, 17px);
-      font-weight: 300; line-height: 1.65;
-      color: var(--blush); max-width: 86%;
+      font-weight: 300;
+      line-height: 1.65;
+      color: var(--blush);
+      max-width: 86%;
     }
-    .slide-body strong { color: var(--lpink); font-weight: 700; }
-    .slide-body em     { color: var(--pink);  font-style: italic; }
+
+    .slide-body strong {
+      color: var(--lpink);
+      font-weight: 700;
+    }
+
+    .slide-body em {
+      color: var(--pink);
+      font-style: italic;
+    }
 
     .hdivider {
       font-size: clamp(1rem, 2.2vh, 1.6rem);
@@ -123,608 +204,814 @@
     /* ────────────────────────────────
        SLIDE 1 – CHAPTER CARD
     ──────────────────────────────── */
-    #s1 { background: radial-gradient(ellipse at 50% 55%, #72003f 0%, #2c001e 55%, #0e0008 100%); }
+    #s1 {
+      background: radial-gradient(ellipse at 50% 55%, #72003f 0%, #2c001e 55%, #0e0008 100%);
+    }
+
     .ch-label {
       font-family: 'Lato', sans-serif;
-      font-size: clamp(8px,1.1vh,11px);
-      letter-spacing: 4px; text-transform: uppercase;
-      color: rgba(255,179,207,.55);
+      font-size: clamp(8px, 1.1vh, 11px);
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: rgba(255, 179, 207, .55);
     }
+
     .ch-number {
       font-family: 'Playfair Display', serif;
       font-size: clamp(48px, 11vh, 100px);
-      color: rgba(255,111,168,.12);
+      color: rgba(255, 111, 168, .12);
       line-height: 1;
-      position: absolute; left: 5%; bottom: 8%;
+      position: absolute;
+      left: 5%;
+      bottom: 8%;
       user-select: none;
     }
+
     .ch-title {
       font-family: 'Playfair Display', serif;
       font-size: clamp(24px, 5.5vh, 54px);
       background: linear-gradient(120deg, #ff6fa8, #ffb3cf, #e63c7e, #ff6fa8);
       background-size: 200% auto;
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
       background-clip: text;
       animation: shimmer 3s linear infinite;
       line-height: 1.2;
     }
+
     @keyframes shimmer {
-      from { background-position: 0% center; }
-      to   { background-position: 200% center; }
+      from {
+        background-position: 0% center;
+      }
+
+      to {
+        background-position: 200% center;
+      }
     }
+
     .ch-sub {
       font-family: 'Playfair Display', serif;
       font-size: clamp(11px, 2vh, 19px);
-      color: var(--blush); font-style: italic; opacity: .85;
+      color: var(--blush);
+      font-style: italic;
+      opacity: .85;
     }
+
     .ch-heart {
       font-size: clamp(32px, 7vh, 65px);
       animation: hbeat 1.4s ease-in-out infinite;
       filter: drop-shadow(0 0 22px #ff6fa8);
     }
+
     @keyframes hbeat {
-      0%,100% { transform: scale(1); }
-      14%      { transform: scale(1.15); }
-      28%      { transform: scale(1); }
-      42%      { transform: scale(1.09); }
+
+      0%,
+      100% {
+        transform: scale(1);
+      }
+
+      14% {
+        transform: scale(1.15);
+      }
+
+      28% {
+        transform: scale(1);
+      }
+
+      42% {
+        transform: scale(1.09);
+      }
     }
 
     /* ────────────────────────────────
        SLIDE 2 – Drithi past
     ──────────────────────────────── */
-    #s2 { background: radial-gradient(ellipse at 50% 60%, #6b0040 0%, #2a0022 60%, #100008 100%); }
+    #s2 {
+      background: radial-gradient(ellipse at 50% 60%, #6b0040 0%, #2a0022 60%, #100008 100%);
+    }
 
     /* ────────────────────────────────
        SLIDE 3 – Not hiding
     ──────────────────────────────── */
-    #s3 { background: linear-gradient(135deg, #4a0030 0%, #1e0018 50%, #3b0028 100%); }
+    #s3 {
+      background: linear-gradient(135deg, #4a0030 0%, #1e0018 50%, #3b0028 100%);
+    }
 
     /* ────────────────────────────────
        SLIDE 4 – No Rettie attachment
     ──────────────────────────────── */
-    #s4 { background: radial-gradient(ellipse at 30% 40%, #5c002a 0%, #1a0012 100%); }
+    #s4 {
+      background: radial-gradient(ellipse at 30% 40%, #5c002a 0%, #1a0012 100%);
+    }
+
     .eye-icon {
       font-size: clamp(30px, 6.5vh, 58px);
       animation: eyeGaze 3s ease-in-out infinite;
       filter: drop-shadow(0 0 14px #ff6fa8);
     }
+
     @keyframes eyeGaze {
-      0%,100% { transform: scale(1) rotate(-3deg); }
-      50%      { transform: scale(1.05) rotate(3deg); }
+
+      0%,
+      100% {
+        transform: scale(1) rotate(-3deg);
+      }
+
+      50% {
+        transform: scale(1.05) rotate(3deg);
+      }
     }
 
     /* ────────────────────────────────
        SLIDE 5 – DEVOTION
     ──────────────────────────────── */
-    #s5 { background: radial-gradient(ellipse at 50% 50%, #7a0048 0%, #2a0018 60%, #0e0008 100%); }
+    #s5 {
+      background: radial-gradient(ellipse at 50% 50%, #7a0048 0%, #2a0018 60%, #0e0008 100%);
+    }
+
     .dev-word {
       font-family: 'Playfair Display', serif;
       font-size: clamp(22px, 5vh, 52px);
       background: linear-gradient(90deg, #ff6fa8, #ffb3cf, #e63c7e, #ff6fa8);
       background-size: 200% auto;
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
       background-clip: text;
       animation: shimmer 2.5s linear infinite;
       letter-spacing: 5px;
     }
-    .dcards { display: flex; flex-direction: column; gap: clamp(5px,1vh,9px); max-width: 82%; }
+
+    .dcards {
+      display: flex;
+      flex-direction: column;
+      gap: clamp(5px, 1vh, 9px);
+      max-width: 82%;
+    }
+
     .dcard {
-      background: rgba(255,111,168,.1);
+      background: rgba(255, 111, 168, .1);
       border-left: 3px solid var(--rose);
       border-radius: 0 8px 8px 0;
-      padding: clamp(4px,.8vh,8px) clamp(8px,1.2vw,14px);
-      font-size: clamp(9px,1.5vh,15px);
-      color: var(--blush); text-align: left; line-height: 1.5;
+      padding: clamp(4px, .8vh, 8px) clamp(8px, 1.2vw, 14px);
+      font-size: clamp(9px, 1.5vh, 15px);
+      color: var(--blush);
+      text-align: left;
+      line-height: 1.5;
     }
-    .dcard strong { color: var(--pink); }
+
+    .dcard strong {
+      color: var(--pink);
+    }
 
     /* ────────────────────────────────
        SLIDE 6 – Caller / no worries
     ──────────────────────────────── */
-    #s6 { background: linear-gradient(160deg, #380020 0%, #150010 60%, #420028 100%); }
-    .tpills { display: flex; flex-wrap: wrap; gap: 7px; justify-content: center; max-width: 88%; }
-    .tpill {
-      background: rgba(255,111,168,.12);
-      border: 1px solid rgba(255,111,168,.4);
-      border-radius: 999px;
-      padding: clamp(3px,.6vh,6px) clamp(10px,1.4vw,16px);
-      font-size: clamp(9px,1.4vh,13px);
-      color: var(--lpink);
-      animation: popIn .5s cubic-bezier(.22,1,.36,1) both;
+    #s6 {
+      background: linear-gradient(160deg, #380020 0%, #150010 60%, #420028 100%);
     }
+
+    .tpills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      justify-content: center;
+      max-width: 88%;
+    }
+
+    .tpill {
+      background: rgba(255, 111, 168, .12);
+      border: 1px solid rgba(255, 111, 168, .4);
+      border-radius: 999px;
+      padding: clamp(3px, .6vh, 6px) clamp(10px, 1.4vw, 16px);
+      font-size: clamp(9px, 1.4vh, 13px);
+      color: var(--lpink);
+      animation: popIn .5s cubic-bezier(.22, 1, .36, 1) both;
+    }
+
     @keyframes popIn {
-      from { transform: scale(0); opacity: 0; }
-      to   { transform: scale(1); opacity: 1; }
+      from {
+        transform: scale(0);
+        opacity: 0;
+      }
+
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
     }
 
     /* ────────────────────────────────
        SLIDE 7 – Don't shut me out
     ──────────────────────────────── */
-    #s7 { background: linear-gradient(200deg, #420025 0%, #200018 50%, #380025 100%); }
-    .plea-card {
-      background: rgba(255,255,255,.05);
-      border: 1px solid rgba(255,111,168,.3);
-      border-radius: 16px;
-      padding: clamp(10px,1.8vh,20px) clamp(14px,2.4vw,28px);
-      max-width: 84%; backdrop-filter: blur(8px);
+    #s7 {
+      background: linear-gradient(200deg, #420025 0%, #200018 50%, #380025 100%);
     }
+
+    .plea-card {
+      background: rgba(255, 255, 255, .05);
+      border: 1px solid rgba(255, 111, 168, .3);
+      border-radius: 16px;
+      padding: clamp(10px, 1.8vh, 20px) clamp(14px, 2.4vw, 28px);
+      max-width: 84%;
+      backdrop-filter: blur(8px);
+    }
+
     .plea-card p {
-      font-family: 'Playfair Display', serif; font-style: italic;
-      font-size: clamp(10px,1.6vh,16px);
-      color: var(--blush); line-height: 1.75;
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: clamp(10px, 1.6vh, 16px);
+      color: var(--blush);
+      line-height: 1.75;
     }
 
     /* ────────────────────────────────
        SLIDE 8 – Baby cried
     ──────────────────────────────── */
-    #s8  { background: radial-gradient(ellipse at 40% 60%, #5c0030 0%, #1e0015 100%); }
+    #s8 {
+      background: radial-gradient(ellipse at 40% 60%, #5c0030 0%, #1e0015 100%);
+    }
+
     .cry-icon {
       font-size: clamp(30px, 6.5vh, 58px);
       animation: cry 2s ease-in-out infinite;
       filter: drop-shadow(0 0 14px #e63c7e);
     }
+
     @keyframes cry {
-      0%,100% { transform: scale(1) rotate(0); }
-      30%      { transform: scale(1.05) rotate(-4deg); }
-      60%      { transform: scale(.96) rotate(4deg); }
+
+      0%,
+      100% {
+        transform: scale(1) rotate(0);
+      }
+
+      30% {
+        transform: scale(1.05) rotate(-4deg);
+      }
+
+      60% {
+        transform: scale(.96) rotate(4deg);
+      }
     }
 
     /* ────────────────────────────────
        SLIDE 9 – Miss you / hug
     ──────────────────────────────── */
-    #s9  { background: linear-gradient(150deg, #3e001e 0%, #180010 60%, #440026 100%); }
+    #s9 {
+      background: linear-gradient(150deg, #3e001e 0%, #180010 60%, #440026 100%);
+    }
+
     .hug-icon {
       font-size: clamp(30px, 6.5vh, 58px);
       animation: hugPulse 2s ease-in-out infinite;
       filter: drop-shadow(0 0 16px #ff6fa8);
     }
+
     @keyframes hugPulse {
-      0%,100% { transform: scale(1); }
-      50%      { transform: scale(1.1); }
+
+      0%,
+      100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.1);
+      }
     }
 
     /* ────────────────────────────────
        SLIDE 10 – Photos
     ──────────────────────────────── */
-    #s10 { background: radial-gradient(ellipse at 50% 80%, #5a0032 0%, #1a0010 100%); }
+    #s10 {
+      background: radial-gradient(ellipse at 50% 80%, #5a0032 0%, #1a0010 100%);
+    }
 
     #photo-upload-btn {
-      position: fixed; bottom: 16px; right: 16px; z-index: 200;
+      position: fixed;
+      bottom: 16px;
+      right: 16px;
+      z-index: 200;
       background: linear-gradient(135deg, var(--rose), var(--deep-rose));
-      color: white; border: none; border-radius: 999px;
-      padding: 9px 18px; font-size: 12px;
-      font-family: 'Lato', sans-serif; cursor: pointer;
-      box-shadow: 0 4px 18px rgba(230,60,126,.5);
-      display: flex; align-items: center; gap: 6px;
-      transition: all .3s ease; letter-spacing: .5px;
+      color: white;
+      border: none;
+      border-radius: 999px;
+      padding: 9px 18px;
+      font-size: 12px;
+      font-family: 'Lato', sans-serif;
+      cursor: pointer;
+      box-shadow: 0 4px 18px rgba(230, 60, 126, .5);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all .3s ease;
+      letter-spacing: .5px;
     }
-    #photo-upload-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(230,60,126,.65); }
-    #photo-upload-input { display: none; }
+
+    #photo-upload-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(230, 60, 126, .65);
+    }
+
+    #photo-upload-input {
+      display: none;
+    }
 
     .photo-grid {
-      display: flex; gap: clamp(6px,1.2vw,14px);
-      flex-wrap: wrap; justify-content: center; align-items: center;
-      max-width: 92%; max-height: 62%; overflow: hidden;
+      display: flex;
+      gap: clamp(6px, 1.2vw, 14px);
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      max-width: 92%;
+      max-height: 62%;
+      overflow: hidden;
     }
+
     .polaroid {
       background: #fff;
-      padding: clamp(3px,.6vw,6px) clamp(3px,.6vw,6px) clamp(12px,2vw,20px);
-      box-shadow: 0 5px 22px rgba(0,0,0,.45);
-      border-radius: 2px; display: inline-block;
-      transform: rotate(var(--tilt,0deg));
+      padding: clamp(3px, .6vw, 6px) clamp(3px, .6vw, 6px) clamp(12px, 2vw, 20px);
+      box-shadow: 0 5px 22px rgba(0, 0, 0, .45);
+      border-radius: 2px;
+      display: inline-block;
+      transform: rotate(var(--tilt, 0deg));
       transition: transform .3s ease, box-shadow .3s ease;
-      animation: popIn .5s cubic-bezier(.22,1,.36,1) both;
+      animation: popIn .5s cubic-bezier(.22, 1, .36, 1) both;
     }
-    .polaroid:hover { transform: rotate(0) scale(1.07); box-shadow: 0 10px 38px rgba(230,60,126,.5); z-index: 5; }
+
+    .polaroid:hover {
+      transform: rotate(0) scale(1.07);
+      box-shadow: 0 10px 38px rgba(230, 60, 126, .5);
+      z-index: 5;
+    }
+
     .polaroid img {
       display: block;
-      width: clamp(60px,10vw,110px); height: clamp(60px,10vw,110px);
+      width: clamp(60px, 10vw, 110px);
+      height: clamp(60px, 10vw, 110px);
       object-fit: cover;
     }
+
     .photo-caption {
-      text-align: center; font-family: 'Playfair Display', serif;
-      font-style: italic; color: #c0215a;
-      font-size: clamp(6px,.9vw,10px);
-      margin-top: clamp(2px,.4vw,5px);
+      text-align: center;
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      color: #c0215a;
+      font-size: clamp(6px, .9vw, 10px);
+      margin-top: clamp(2px, .4vw, 5px);
     }
+
     .photo-empty {
-      display: flex; flex-direction: column;
-      align-items: center; gap: 8px;
-      color: rgba(255,179,207,.45);
-      font-family: 'Playfair Display', serif; font-style: italic;
-      font-size: clamp(11px,1.7vh,17px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255, 179, 207, .45);
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: clamp(11px, 1.7vh, 17px);
     }
-    .photo-empty .ei { font-size: clamp(28px, 5vh, 50px); opacity: .4; }
+
+    .photo-empty .ei {
+      font-size: clamp(28px, 5vh, 50px);
+      opacity: .4;
+    }
 
     /* ────────────────────────────────
        SLIDE 11 – I Love You
     ──────────────────────────────── */
-    #s11 { background: radial-gradient(ellipse at 50% 50%, #7a0048 0%, #2e0020 55%, #0e0008 100%); }
+    #s11 {
+      background: radial-gradient(ellipse at 50% 50%, #7a0048 0%, #2e0020 55%, #0e0008 100%);
+    }
+
     .finale-hearts {
-      display: flex; gap: 10px;
+      display: flex;
+      gap: 10px;
       font-size: clamp(18px, 3.8vh, 36px);
       animation: hbeat 1.4s ease-in-out infinite;
     }
+
     .glitter-title {
       font-family: 'Playfair Display', serif;
       font-size: clamp(30px, 7vh, 68px);
       background: linear-gradient(90deg, #ff6fa8, #ffb3cf, #e63c7e, #ff6fa8);
       background-size: 200% auto;
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
       background-clip: text;
       animation: shimmer 3s linear infinite;
     }
+
     .finale-sub {
       font-family: 'Playfair Display', serif;
       font-size: clamp(12px, 2.2vh, 22px);
-      color: var(--gold); letter-spacing: 3px; font-style: italic;
+      color: var(--gold);
+      letter-spacing: 3px;
+      font-style: italic;
     }
 
     /* ════════════════════════════════
        NAVIGATION — arrows on sides
     ════════════════════════════════ */
     .side-btn {
-      position: fixed; top: 50%; z-index: 50;
+      position: fixed;
+      top: 50%;
+      z-index: 50;
       transform: translateY(-50%);
-      background: rgba(255,111,168,.15);
-      border: 1px solid rgba(255,111,168,.4);
+      background: rgba(255, 111, 168, .15);
+      border: 1px solid rgba(255, 111, 168, .4);
       border-radius: 50%;
       width: clamp(36px, 6vw, 48px);
       height: clamp(36px, 6vw, 48px);
       font-size: clamp(14px, 2.5vw, 20px);
-      color: var(--lpink); cursor: pointer;
-      display: flex; align-items: center; justify-content: center;
+      color: var(--lpink);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       transition: all .3s ease;
       backdrop-filter: blur(4px);
     }
-    .side-btn:hover { background: rgba(255,111,168,.35); box-shadow: 0 0 18px rgba(255,111,168,.35); }
-    .side-btn:disabled { opacity: .2; cursor: default; }
-    #prevBtn { left: 8px; }
-    #nextBtn { right: 8px; }
+
+    .side-btn:hover {
+      background: rgba(255, 111, 168, .35);
+      box-shadow: 0 0 18px rgba(255, 111, 168, .35);
+    }
+
+    .side-btn:disabled {
+      opacity: .2;
+      cursor: default;
+    }
+
+    #prevBtn {
+      left: 8px;
+    }
+
+    #nextBtn {
+      right: 8px;
+    }
 
     /* Slide counter + dots — bottom strip */
     #bottom-ui {
-      position: relative; z-index: 10;
-      display: flex; flex-direction: column;
-      align-items: center; gap: 5px;
+      position: relative;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
       margin-top: 6px;
     }
+
     #slide-counter {
-      color: rgba(255,179,207,.5);
+      color: rgba(255, 179, 207, .5);
       font-size: clamp(9px, 1.3vh, 12px);
       letter-spacing: 2px;
     }
-    #dots { display: flex; gap: 6px; }
+
+    #dots {
+      display: flex;
+      gap: 6px;
+    }
+
     .dot {
-      width: 6px; height: 6px; border-radius: 50%;
-      background: rgba(255,111,168,.25); cursor: pointer;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: rgba(255, 111, 168, .25);
+      cursor: pointer;
       transition: all .3s ease;
     }
-    .dot.active { background: var(--pink); transform: scale(1.45); box-shadow: 0 0 7px var(--pink); }
+
+    .dot.active {
+      background: var(--pink);
+      transform: scale(1.45);
+      box-shadow: 0 0 7px var(--pink);
+    }
   </style>
 </head>
+
 <body>
 
-<div id="hearts-bg"></div>
+  <div id="hearts-bg"></div>
 
-<!-- Side nav buttons -->
-<button class="side-btn" id="prevBtn" onclick="changeSlide(-1)" disabled>‹</button>
-<button class="side-btn" id="nextBtn" onclick="changeSlide(1)">›</button>
+  <!-- Side nav buttons -->
+  <button class="side-btn" id="prevBtn" onclick="changeSlide(-1)" disabled>‹</button>
+  <button class="side-btn" id="nextBtn" onclick="changeSlide(1)">›</button>
 
-<div id="slideshow">
+  <div id="slideshow">
 
-  <!-- ══ SLIDE 1 — Reassurance: Chapter 1 ══ -->
-  <div class="slide active" id="s1">
-    <div class="slide-inner">
-      <span class="deco-heart" style="top:6%;left:7%">💗</span>
-      <span class="deco-heart" style="top:8%;right:7%">💕</span>
-      <span class="deco-heart" style="bottom:8%;left:9%">✨</span>
-      <span class="deco-heart" style="bottom:6%;right:7%">💖</span>
-      <div class="ch-number">I</div>
+    <!-- ══ SLIDE 1 — Reassurance: Chapter 1 ══ -->
+    <div class="slide active" id="s1">
+      <div class="slide-inner">
+        <span class="deco-heart" style="top:6%;left:7%">💗</span>
+        <span class="deco-heart" style="top:8%;right:7%">💕</span>
+        <span class="deco-heart" style="bottom:8%;left:9%">✨</span>
+        <span class="deco-heart" style="bottom:6%;right:7%">💖</span>
+        <div class="ch-number">I</div>
 
-      <div class="ch-label">opening chapter</div>
-      <div class="ch-heart">❤️</div>
-      <div class="ch-title">Reassurance</div>
-      <div class="ch-sub">Chapter One — everything I need you to know.</div>
-      <div class="slide-body" style="max-width:72%; font-size:clamp(10px,1.6vh,16px);">
-        I made this for you.<br />
-        Every word is real. Every line is something<br />
-        I've been carrying and couldn't say right.<br /><br />
-        Please read it all. 💕
-      </div>
-    </div>
-  </div>
-
-  <!-- ══ SLIDE 2 — Drithi Past ══ -->
-  <div class="slide" id="s2">
-    <div class="slide-inner">
-      <span class="deco-heart" style="top:7%;left:7%">💗</span>
-      <span class="deco-heart" style="bottom:8%;right:7%">💕</span>
-
-      <div class="slide-tag">Let me be clear about one thing first</div>
-      <h2 class="slide-title">Drithi Was My <em>Past.</em><br />Full Stop.</h2>
-      <div class="hdivider">💕 💕 💕</div>
-      <div class="slide-body">
-        She does not enter my consciousness —
-        <strong>not even for a split second.</strong><br /><br />
-        It is done. Over. Finished.<br /><br />
-        This — right here — is where my mind lives.
-        In you. <em>Only you.</em> 💕
-      </div>
-    </div>
-  </div>
-
-  <!-- ══ SLIDE 3 — Not Hiding ══ -->
-  <div class="slide" id="s3">
-    <div class="slide-inner">
-      <span class="deco-heart" style="top:7%;left:6%">🫀</span>
-      <span class="deco-heart" style="bottom:9%;right:6%">💗</span>
-
-      <div class="slide-tag">I have nothing to hide — nothing</div>
-      <h2 class="slide-title">I Am Not <em>Hiding</em><br />Anything From You</h2>
-      <div class="hdivider">💕 💕 💕</div>
-      <div class="slide-body">
-        I'm not hiding — I don't <em>want</em> to hide —
-        because there is genuinely <strong>nothing to hide.</strong><br /><br />
-        I know, I know — I should've sent you that screenshot the literal split second it happened
-        and told you all of it right then.<br /><br />
-        That's on me. And I own that completely.
-      </div>
-    </div>
-  </div>
-
-  <!-- ══ SLIDE 4 — No Rettie ══ -->
-  <div class="slide" id="s4">
-    <div class="slide-inner">
-      <span class="deco-heart" style="top:7%;right:7%">💖</span>
-      <span class="deco-heart" style="bottom:9%;left:6%">✨</span>
-
-      <div class="slide-tag">Look. Right here. In my eyes.</div>
-      <h2 class="slide-title">I Have <em>Zero</em> Attachment<br />to Drithi</h2>
-      <div class="eye-icon">👁️‍🗨️</div>
-      <div class="slide-body">
-        For real — look at my eyes.<br />
-        <strong>It's done. It's understood. It doesn't exist.</strong><br /><br />
-        I processed it. I closed it completely —
-        and <em>only then</em> was I ready to pursue something real.<br /><br />
-        That something real is <strong>you.</strong> That's the whole list.
-      </div>
-    </div>
-  </div>
-
-  <!-- ══ SLIDE 5 — Devotion ══ -->
-  <div class="slide" id="s5">
-    <div class="slide-inner">
-      <span class="deco-heart" style="top:6%;left:6%">💍</span>
-      <span class="deco-heart" style="bottom:8%;right:6%">💖</span>
-
-      <div class="slide-tag">Get this through your beautiful head</div>
-      <div class="dev-word">DEVOTION</div>
-      <div class="dcards">
-        <div class="dcard">You are <strong>not a rebound. Not an X. Not a placeholder.</strong> You are my freaking <strong>devotion.</strong></div>
-        <div class="dcard">You are in my <strong>extreme phase</strong> — and I am giving you extremes I've never given anyone. Ever.</div>
-        <div class="dcard">I'm pleading — <strong>never ever</strong> have a second thought about my unconditional love.</div>
-        <div class="dcard">And selfishly? <strong>I want you to pursue me too.</strong> Understand me. Because I want you — badly.</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ══ SLIDE 6 — Caller / No Worries ══ -->
-  <div class="slide" id="s6">
-    <div class="slide-inner">
-      <span class="deco-heart" style="top:7%;right:7%">🔒</span>
-      <span class="deco-heart" style="bottom:9%;left:6%">💗</span>
-
-      <div class="slide-tag">I am down so bad and it's only you</div>
-      <h2 class="slide-title">Another Woman Doesn't<br /><em>Even Enter My Mind</em></h2>
-      <div class="slide-body">
-        I am <strong>down so bad</strong> — and that other thought doesn't even get a slot. Not a flicker.
-      </div>
-      <div class="tpills">
-        <div class="tpill" style="animation-delay:.00s">📱 You have full access to my caller</div>
-        <div class="tpill" style="animation-delay:.08s">🔍 Catch it anytime you want</div>
-        <div class="tpill" style="animation-delay:.16s">⚠️ Warn me. Question me. Do anything</div>
-        <div class="tpill" style="animation-delay:.24s">✅ Ask me whatever, whenever</div>
-        <div class="tpill" style="animation-delay:.32s">🌍 Far or close — we figure it together</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ══ SLIDE 7 — Don't Shut Me Out ══ -->
-  <div class="slide" id="s7">
-    <div class="slide-inner">
-      <span class="deco-heart" style="top:7%;left:6%">🚪</span>
-      <span class="deco-heart" style="bottom:9%;right:6%">💗</span>
-
-      <div class="slide-tag">One thing I'm genuinely asking you</div>
-      <h2 class="slide-title">Please Don't<br /><em>Shut Me Out</em></h2>
-      <div class="hdivider">💕 💕 💕</div>
-      <div class="plea-card">
-        <p>
-          "If something like this happens again —
-          please don't go silent. Don't ignore my texts.<br /><br />
-          If I'm good enough to make you <strong>smile and laugh</strong> —
-          I deserve the chance to <strong>carry your pain too.</strong><br /><br />
-          From now on I will spam you messages.
-          Because your silence scares me more than anything." 💕
-        </p>
-      </div>
-    </div>
-  </div>
-
-  <!-- ══ SLIDE 8 — Baby Cried ══ -->
-  <div class="slide" id="s8">
-    <div class="slide-inner">
-      <span class="deco-heart" style="top:7%;left:7%">🥺</span>
-      <span class="deco-heart" style="bottom:9%;right:7%">💗</span>
-
-      <div class="slide-tag">That day — I think about it a lot</div>
-      <h2 class="slide-title">My Baby <em>Cried.</em></h2>
-      <div class="cry-icon">🥺💧</div>
-      <div class="slide-body">
-        I came — and I'm glad I came.<br /><br />
-        But I came at the <strong>wrong time.</strong>
-        I missed the exact moment you needed me the most.<br /><br />
-        <em>I'm sorry for that. Again and again — I'm sorry.</em>
-      </div>
-    </div>
-  </div>
-
-  <!-- ══ SLIDE 9 — Miss You / Hug ══ -->
-  <div class="slide" id="s9">
-    <div class="slide-inner">
-      <span class="deco-heart" style="top:8%;left:6%">🤍</span>
-      <span class="deco-heart" style="bottom:9%;right:7%">💗</span>
-
-      <div class="slide-tag">What's been going on with me</div>
-      <h2 class="slide-title">I've Wanted To<br /><em>Hug You So Bad</em></h2>
-      <div class="hug-icon">🤗</div>
-      <div class="slide-body">
-        All these days — I've had this ache to just <strong>hold you.</strong><br /><br />
-        I miss you so, so, <em>so</em> much.<br />
-        Every Insta quote, every episode, every late-night thing —<br />
-        that was just <strong>missing you out loud.</strong> 💕
-      </div>
-    </div>
-  </div>
-
-  <!-- ══ SLIDE 10 — Photos ══ -->
-  <div class="slide" id="s10">
-    <div class="slide-inner">
-      <span class="deco-heart" style="top:7%;right:7%">📸</span>
-      <span class="deco-heart" style="bottom:9%;left:6%">💗</span>
-
-      <div class="slide-tag">Look at us though</div>
-      <h2 class="slide-title">We Do Look <em>Cute</em><br />Together 💕</h2>
-
-      <div class="photo-grid" id="photo-grid">
-        <div class="photo-empty" id="photo-empty">
-          <span class="ei">📷</span>
-          <span>Tap the pink button — add our photos 💕</span>
+        <div class="ch-label">opening chapter</div>
+        <div class="ch-heart">❤️</div>
+        <div class="ch-title">Reassurance</div>
+        <div class="ch-sub">Chapter One. Everything I need you to know.</div>
+        <div class="slide-body" style="max-width:72%; font-size:clamp(10px,1.6vh,16px);">
+          I made this for you.<br />
+          Every word is real. Every line is something<br />
+          I've been carrying and couldn't say right.<br /><br />
+          Please read it all. 💕
         </div>
       </div>
     </div>
-  </div>
 
-  <!-- ══ SLIDE 11 — I Love You ══ -->
-  <div class="slide" id="s11">
-    <div class="slide-inner">
-      <span class="deco-heart" style="top:6%;left:6%">💖</span>
-      <span class="deco-heart" style="top:6%;right:6%">💖</span>
-      <span class="deco-heart" style="bottom:7%;left:6%">💖</span>
-      <span class="deco-heart" style="bottom:7%;right:6%">💖</span>
+    <!-- ══ SLIDE 2 — Drithi Past ══ -->
+    <div class="slide" id="s2">
+      <div class="slide-inner">
+        <span class="deco-heart" style="top:7%;left:7%">💗</span>
+        <span class="deco-heart" style="bottom:8%;right:7%">💕</span>
 
-      <div class="finale-hearts">💗 💕 ❤️ 💕 💗</div>
-      <div class="glitter-title">I Love You</div>
-      <div class="finale-sub">— nothing else —</div>
-      <div class="finale-hearts" style="font-size:clamp(12px,2.4vh,22px); animation-delay:.7s">
-        ❤️ 💕 💗 💕 ❤️
+        <div class="slide-tag">Let me be clear about one thing first</div>
+        <h2 class="slide-title">Drithi Was My <em>Past.</em><br />Full Stop.</h2>
+        <div class="hdivider">💕 💕 💕</div>
+        <div class="slide-body">
+          She does not enter my consciousness,
+          <strong>not even for a split second.</strong><br /><br />
+          It is done. Over. Finished.<br /><br />
+          Right here is where my mind lives.
+          In you. <em>Only you.</em> 💕
+        </div>
       </div>
     </div>
+
+    <!-- ══ SLIDE 3 — Not Hiding ══ -->
+    <div class="slide" id="s3">
+      <div class="slide-inner">
+        <span class="deco-heart" style="top:7%;left:6%">🫀</span>
+        <span class="deco-heart" style="bottom:9%;right:6%">💗</span>
+
+        <div class="slide-tag">I have nothing to hide, nothing</div>
+        <h2 class="slide-title">I Am Not <em>Hiding</em><br />Anything From You</h2>
+        <div class="hdivider">💕 💕 💕</div>
+        <div class="slide-body">
+          I'm not hiding, I don't <em>want</em> to hide,
+          because there is genuinely <strong>nothing to hide.</strong><br /><br />
+          I know, I know, I should've sent you that screenshot the literal split second it happened
+          and told you all of it right then.<br /><br />
+          That's on me. And I own that completely.
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ SLIDE 4 — No Rettie ══ -->
+    <div class="slide" id="s4">
+      <div class="slide-inner">
+        <span class="deco-heart" style="top:7%;right:7%">💖</span>
+        <span class="deco-heart" style="bottom:9%;left:6%">✨</span>
+
+        <div class="slide-tag">Look. Right here. In my eyes.</div>
+        <h2 class="slide-title">I Have <em>Zero</em> Attachment<br />to Drithi</h2>
+        <div class="eye-icon">👁️‍🗨️</div>
+        <div class="slide-body">
+          For real, look at my eyes.<br />
+          <strong>It's done. It's understood. It doesn't exist.</strong><br /><br />
+          I processed it. I closed it completely.
+          and <em>only then</em> was I ready to pursue something real.<br /><br />
+          That something real is <strong>you.</strong> That's the whole list.
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ SLIDE 5 — Devotion ══ -->
+    <div class="slide" id="s5">
+      <div class="slide-inner">
+        <span class="deco-heart" style="top:6%;left:6%">💍</span>
+        <span class="deco-heart" style="bottom:8%;right:6%">💖</span>
+
+        <div class="slide-tag">Get this through your beautiful head</div>
+        <div class="dev-word">DEVOTION</div>
+        <div class="dcards">
+          <div class="dcard">You are <strong>not a rebound. Not an X. Not a placeholder.</strong> You are my freaking
+            <strong>devotion.</strong></div>
+          <div class="dcard">You are in my <strong>extreme phase</strong> and I am giving you extremes I've never given anyone. Ever.</div>
+          <div class="dcard">I'm pleading, <strong>never ever</strong> have a second thought about my unconditional love.</div>
+          <div class="dcard">And selfishly? <strong>I want you to pursue me too.</strong> Understand me. Because I want you badly.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ SLIDE 6 — Caller / No Worries ══ -->
+    <div class="slide" id="s6">
+      <div class="slide-inner">
+        <span class="deco-heart" style="top:7%;right:7%">🔒</span>
+        <span class="deco-heart" style="bottom:9%;left:6%">💗</span>
+
+        <div class="slide-tag">I am down so bad and it's only you</div>
+        <h2 class="slide-title">Another Woman Doesn't<br /><em>Even Enter My Mind</em></h2>
+        <div class="slide-body">
+          I am <strong>down so bad</strong> and that other thought doesn't even get a slot. Not a flicker.
+        </div>
+        <div class="tpills">
+          <div class="tpill" style="animation-delay:.00s">📱 You have full access to my collar</div>
+          <div class="tpill" style="animation-delay:.08s">🔍 Catch it anytime you want</div>
+          <div class="tpill" style="animation-delay:.16s">⚠️ Warn me. Question me. Do anything</div>
+          <div class="tpill" style="animation-delay:.24s">✅ Ask me whatever, whenever</div>
+          <div class="tpill" style="animation-delay:.32s">🌍 Far or close, we figure it together</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ SLIDE 7 — Don't Shut Me Out ══ -->
+    <div class="slide" id="s7">
+      <div class="slide-inner">
+        <span class="deco-heart" style="top:7%;left:6%">🚪</span>
+        <span class="deco-heart" style="bottom:9%;right:6%">💗</span>
+
+        <div class="slide-tag">One thing I'm genuinely asking you</div>
+        <h2 class="slide-title">Please Don't<br /><em>Shut Me Out</em></h2>
+        <div class="hdivider">💕 💕 💕</div>
+        <div class="plea-card">
+          <p>
+            "If something like this happens again,
+            please don't go silent. Don't ignore my texts.<br /><br />
+            If I'm good enough to make you <strong>smile and laugh</strong>,
+            I deserve the chance to <strong>carry your pain too.</strong><br /><br />
+            From now on I will spam you messages.
+            Because your silence scares me more than anything." 💕
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ SLIDE 8 — Baby Cried ══ -->
+    <div class="slide" id="s8">
+      <div class="slide-inner">
+        <span class="deco-heart" style="top:7%;left:7%">🥺</span>
+        <span class="deco-heart" style="bottom:9%;right:7%">💗</span>
+
+        <div class="slide-tag">That day. I think about it a lot</div>
+        <h2 class="slide-title">My Baby <em>Cried.</em></h2>
+        <div class="cry-icon">🥺💧</div>
+        <div class="slide-body">
+          I came, and I'm glad I came.<br /><br />
+          But I came at the <strong>wrong time.</strong>
+          I missed the exact moment you needed me the most.<br /><br />
+          <em>I'm sorry for that. Again and again I'm sorry.</em>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ SLIDE 9 — Miss You / Hug ══ -->
+    <div class="slide" id="s9">
+      <div class="slide-inner">
+        <span class="deco-heart" style="top:8%;left:6%">🤍</span>
+        <span class="deco-heart" style="bottom:9%;right:7%">💗</span>
+
+        <div class="slide-tag">What's been going on with me</div>
+        <h2 class="slide-title">I've Wanted To<br /><em>Hug You So Bad</em></h2>
+        <div class="hug-icon">🤗</div>
+        <div class="slide-body">
+          All these days, I've had this ache to just <strong>hold you.</strong><br /><br />
+          I miss you so, so, <em>so</em> much.<br />
+          Every Insta quote, every episode, every late-night thing...<br />
+          that was just <strong>missing you out loud.</strong> 💕
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ SLIDE 10 Photos ══ -->
+    <div class="slide" id="s10">
+      <div class="slide-inner">
+        <span class="deco-heart" style="top:7%;right:7%">📸</span>
+        <span class="deco-heart" style="bottom:9%;left:6%">💗</span>
+
+        <div class="slide-tag">Look at us though</div>
+        <h2 class="slide-title">We Do Look <em>Cute</em><br />Together 💕</h2>
+
+        <div class="photo-grid" id="photo-grid">
+          <div class="photo-empty" id="photo-empty">
+            <span class="ei">📷</span>
+            <span>Tap the pink button to add our photos 💕</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ SLIDE 11 — I Love You ══ -->
+    <div class="slide" id="s11">
+      <div class="slide-inner">
+        <span class="deco-heart" style="top:6%;left:6%">💖</span>
+        <span class="deco-heart" style="top:6%;right:6%">💖</span>
+        <span class="deco-heart" style="bottom:7%;left:6%">💖</span>
+        <span class="deco-heart" style="bottom:7%;right:6%">💖</span>
+
+        <div class="finale-hearts">💗 💕 ❤️ 💕 💗</div>
+        <div class="glitter-title">I Love You</div>
+        <div class="finale-sub">nothing else</div>
+        <div class="finale-hearts" style="font-size:clamp(12px,2.4vh,22px); animation-delay:.7s">
+          ❤️ 💕 💗 💕 ❤️
+        </div>
+      </div>
+    </div>
+
   </div>
 
-</div>
+  <!-- Bottom counter + dots -->
+  <div id="bottom-ui">
+    <span id="slide-counter">1 / 11</span>
+    <div id="dots"></div>
+  </div>
 
-<!-- Bottom counter + dots -->
-<div id="bottom-ui">
-  <span id="slide-counter">1 / 11</span>
-  <div id="dots"></div>
-</div>
+  <!-- Photo upload -->
+  <input type="file" id="photo-upload-input" accept="image/*" multiple />
+  <button id="photo-upload-btn" onclick="document.getElementById('photo-upload-input').click()">
+    📷 Add Our Photos
+  </button>
 
-<!-- Photo upload -->
-<input type="file" id="photo-upload-input" accept="image/*" multiple />
-<button id="photo-upload-btn" onclick="document.getElementById('photo-upload-input').click()">
-  📷 Add Our Photos
-</button>
+  <script>
+    // ── Slides ──
+    const slides = document.querySelectorAll('.slide');
+    const total = slides.length;
+    let current = 0;
 
-<script>
-  // ── Slides ──
-  const slides  = document.querySelectorAll('.slide');
-  const total   = slides.length;
-  let current   = 0;
+    const dotsEl = document.getElementById('dots');
+    const dotEls = [];
+    for (let i = 0; i < total; i++) {
+      const d = document.createElement('div');
+      d.className = 'dot' + (i === 0 ? ' active' : '');
+      d.onclick = () => goTo(i);
+      dotsEl.appendChild(d);
+      dotEls.push(d);
+    }
 
-  const dotsEl  = document.getElementById('dots');
-  const dotEls  = [];
-  for (let i = 0; i < total; i++) {
-    const d = document.createElement('div');
-    d.className = 'dot' + (i === 0 ? ' active' : '');
-    d.onclick   = () => goTo(i);
-    dotsEl.appendChild(d);
-    dotEls.push(d);
-  }
+    function goTo(idx) {
+      slides[current].classList.remove('active');
+      dotEls[current].classList.remove('active');
+      current = idx;
+      slides[current].classList.add('active');
+      dotEls[current].classList.add('active');
+      document.getElementById('slide-counter').textContent = `${current + 1} / ${total}`;
+      document.getElementById('prevBtn').disabled = current === 0;
+      document.getElementById('nextBtn').disabled = current === total - 1;
+    }
 
-  function goTo(idx) {
-    slides[current].classList.remove('active');
-    dotEls[current].classList.remove('active');
-    current = idx;
-    slides[current].classList.add('active');
-    dotEls[current].classList.add('active');
-    document.getElementById('slide-counter').textContent = `${current + 1} / ${total}`;
-    document.getElementById('prevBtn').disabled = current === 0;
-    document.getElementById('nextBtn').disabled = current === total - 1;
-  }
+    function changeSlide(dir) { goTo(current + dir); }
 
-  function changeSlide(dir) { goTo(current + dir); }
-
-  document.addEventListener('keydown', e => {
-    if (e.key === 'ArrowRight' && current < total - 1) changeSlide(1);
-    if (e.key === 'ArrowLeft'  && current > 0)         changeSlide(-1);
-  });
-
-  // ── Photo Upload ──
-  const captions = ['us 💕','my fav 💖','our moment 🌸','forever ❤️','we look cute 💗','my heart 💓','us 💝','always 💕'];
-  const tilts    = [-4, 3, -2.5, 5, -3.5, 2, -5, 4];
-  let photoCount = 0;
-
-  document.getElementById('photo-upload-input').addEventListener('change', function(e) {
-    const files = Array.from(e.target.files);
-    if (!files.length) return;
-    const grid  = document.getElementById('photo-grid');
-    const empty = document.getElementById('photo-empty');
-    if (empty) empty.remove();
-
-    files.forEach((file, i) => {
-      const reader = new FileReader();
-      reader.onload = ev => {
-        const idx  = (photoCount++) % tilts.length;
-        const wrap = document.createElement('div');
-        wrap.className = 'polaroid';
-        wrap.style.setProperty('--tilt', tilts[idx] + 'deg');
-        wrap.style.animationDelay = (i * 0.08) + 's';
-        const img = document.createElement('img');
-        img.src = ev.target.result;
-        const cap = document.createElement('div');
-        cap.className = 'photo-caption';
-        cap.textContent = captions[idx];
-        wrap.appendChild(img);
-        wrap.appendChild(cap);
-        grid.appendChild(wrap);
-      };
-      reader.readAsDataURL(file);
+    document.addEventListener('keydown', e => {
+      if (e.key === 'ArrowRight' && current < total - 1) changeSlide(1);
+      if (e.key === 'ArrowLeft' && current > 0) changeSlide(-1);
     });
-    this.value = '';
-  });
 
-  // ── Floating hearts ──
-  const bgContainer = document.getElementById('hearts-bg');
-  const heartEmojis = ['💗','💕','💖','❤️','💓','💘','🌸','✨','💝'];
-  const maxHearts   = 22;
+    // ── Photo Upload ──
+    const captions = ['us 💕', 'my fav 💖', 'our moment 🌸', 'forever ❤️', 'we look cute 💗', 'my heart 💓', 'us 💝', 'always 💕'];
+    const tilts = [-4, 3, -2.5, 5, -3.5, 2, -5, 4];
+    let photoCount = 0;
 
-  function spawnHeart() {
-    if (bgContainer.children.length >= maxHearts) return;
-    const el = document.createElement('span');
-    el.className  = 'bg-heart';
-    el.textContent = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
-    el.style.fontSize = (1 + Math.random() * 1.5) + 'rem';
-    el.style.left = Math.random() * 100 + '%';
-    const dur = 5 + Math.random() * 9;
-    el.style.animationDuration = dur + 's';
-    el.style.animationDelay   = (Math.random() * 2) + 's';
-    bgContainer.appendChild(el);
-    setTimeout(() => el.remove(), (dur + 3) * 1000);
-  }
-  setInterval(spawnHeart, 450);
-  for (let i = 0; i < 10; i++) spawnHeart();
-</script>
+    document.getElementById('photo-upload-input').addEventListener('change', function (e) {
+      const files = Array.from(e.target.files);
+      if (!files.length) return;
+      const grid = document.getElementById('photo-grid');
+      const empty = document.getElementById('photo-empty');
+      if (empty) empty.remove();
+
+      files.forEach((file, i) => {
+        const reader = new FileReader();
+        reader.onload = ev => {
+          const idx = (photoCount++) % tilts.length;
+          const wrap = document.createElement('div');
+          wrap.className = 'polaroid';
+          wrap.style.setProperty('--tilt', tilts[idx] + 'deg');
+          wrap.style.animationDelay = (i * 0.08) + 's';
+          const img = document.createElement('img');
+          img.src = ev.target.result;
+          const cap = document.createElement('div');
+          cap.className = 'photo-caption';
+          cap.textContent = captions[idx];
+          wrap.appendChild(img);
+          wrap.appendChild(cap);
+          grid.appendChild(wrap);
+        };
+        reader.readAsDataURL(file);
+      });
+      this.value = '';
+    });
+
+    // ── Floating hearts ──
+    const bgContainer = document.getElementById('hearts-bg');
+    const heartEmojis = ['💗', '💕', '💖', '❤️', '💓', '💘', '🌸', '✨', '💝'];
+    const maxHearts = 22;
+
+    function spawnHeart() {
+      if (bgContainer.children.length >= maxHearts) return;
+      const el = document.createElement('span');
+      el.className = 'bg-heart';
+      el.textContent = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+      el.style.fontSize = (1 + Math.random() * 1.5) + 'rem';
+      el.style.left = Math.random() * 100 + '%';
+      const dur = 5 + Math.random() * 9;
+      el.style.animationDuration = dur + 's';
+      el.style.animationDelay = (Math.random() * 2) + 's';
+      bgContainer.appendChild(el);
+      setTimeout(() => el.remove(), (dur + 3) * 1000);
+    }
+    setInterval(spawnHeart, 450);
+    for (let i = 0; i < 10; i++) spawnHeart();
+  </script>
 </body>
+
 </html>
